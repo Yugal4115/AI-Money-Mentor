@@ -36,12 +36,10 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      cursor: none !important;
     }
 
     html {
       scroll-behavior: smooth;
-      cursor: none;
     }
 
     body {
@@ -49,13 +47,13 @@
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
-      cursor: none;
       min-height: 100vh;
+      cursor: none;
     }
 
     /* ── Cursor ── */
     #cursor {
-      position: absolute;
+      position: fixed;
       width: 14px;
       height: 14px;
       border-radius: 50%;
@@ -71,7 +69,7 @@
     }
 
     #cursor-ring {
-      position: absolute;
+      position: fixed;
       width: 36px;
       height: 36px;
       border-radius: 50%;
@@ -3395,10 +3393,9 @@
       var entered = false;
 
       document.addEventListener('mousemove', function (e) {
-        mx = e.pageX; my = e.pageY;
+        mx = e.clientX; 
+        my = e.clientY;
         if (!entered) {
-          // First move — snap ring to cursor position, then fade in
-          rx = mx; ry = my;
           cur.style.opacity = '1';
           ring.style.opacity = '1';
           entered = true;
